@@ -2,60 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rust-wasm-encrypt</title>
-    <link rel="icon" href="./rustwasm.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rust-wasm-encrypt</title>
+  <link rel="icon" href="./rustwasm.png">
 </head>
 
 <body>
 
 </body>
-<!-- <script type="module">
-import JSEncrypt from "https://cdn.jsdelivr.net/npm/jsencrypt@3.3.2/+esm"
-
-const pubKey = 'MFswDQYJKoZIhvcNAQEBBQADSgAwRwJATbeGACZ2cFg7e9Xz57KuwKcxW0rBg9Y5+ad8xqM5ejQ8Q92MBtBgzLnDm3ZXkgxmo5esiodhPKSc3OR+0A4gtQIDAQAB'
-const Encrypt = new JSEncrypt()
-Encrypt.setPublicKey(pubKey)
-const userIdToken = 'ogXO2Ue4j4U='
-const timestamp = new Date().getTime()
-const sign = Encrypt.encrypt(`${userIdToken}${timestamp}`);
-console.log('sign', sign)
-
-const decrypt = new JSEncrypt();
-const privateKey = 'MIIBOQIBAAJATbeGACZ2cFg7e9Xz57KuwKcxW0rBg9Y5+ad8xqM5ejQ8Q92MBtBgzLnDm3ZXkgxmo5esiodhPKSc3OR+0A4gtQIDAQABAkA1vYA1vmMMEJchbLM6Nr7MjVB99lWWWp7AWebYXKo0LAN2+fd49UtzmJh/GzqNmVmnBclw58fng1dxfhX60GRBAiEAk0WEB7T9AyUdcStM65HoVaLQlFyESGq+mdzK4X9uhQ0CIQCHGBnT7lTn232Rie8XsM6rZghzThR9v5a6isBDGIbwSQIhAI2M4GVD+XffYZgXpVw6ppRA5Lfk4KR2LPLYPAxXnlO1AiAr3YeFaT3oizyapU8dQivZO6hCyHee3Tb0G1mSb8RhAQIgMve5TGFFfY3GO5JoIciemfZHTqHJZ/lfx0yzicAlkwQ='
-decrypt.setPrivateKey(privateKey);
-var uncrypted = decrypt.decrypt(`${sign}`);
-console.log(uncrypted)
-console.assert(userIdToken === uncrypted.slice(0,12), '"%o"', {
-    errorMsg: '# 非本人操作，请注意账号安全！'
-})
-</script> -->
-<!-- <script>
-  const importObject = { imports: { imported_func: (arg) => console.log(arg) } };
-  fetch(`./pkg/rust_wasm_encrypt_bg.wasm?_t=${new Date().getTime()}`)
-        .then(response => response.arrayBuffer())
-        .then(bytes => WebAssembly.instantiate(bytes, importObject))
-        .then(result => {
-            const exports = result.instance.exports;
-            console.log("导入完成")
-            // 在此处执行.wasm文件的导出函数或操作
-            const dd = exports.sign("828")
-            console.log(dd)
-
-            console.log('加法', exports.add(5, 3))
-        })
-        .catch(error => {
-            console.error('Failed to load and execute .wasm file:', error);
-        });
-</script> -->
 <script type="module">
-    import init, { encrypt } from './pkg/rust_wasm_encrypt.js';
-    async function run() {
-        await init();
-        console.log('签名', encrypt("828"))
-        // console.log(dd.encrypt("828"))
-    }
-    run();
+  import init, { encrypt } from './pkg/rust_wasm_encrypt.js';
+  async function run() {
+    await init();
+    console.log('签名', encrypt("828"))
+    // console.log(dd.encrypt("828"))
+  }
+  run();
 </script>
+
 </html>
